@@ -13,6 +13,7 @@ type Claims struct {
 	jwt.StandardClaims
 }
 
+// ReleaseToken 加密协议
 func ReleaseToken(user models.User) (string, error) {
 	expirationTime := time.Now().Add(7 * 24 * time.Hour) // 有效期7天
 	claims := &Claims{
