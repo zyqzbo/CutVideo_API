@@ -1,7 +1,6 @@
 package common
 
 import (
-	"CutVido_api/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -13,7 +12,8 @@ func InitDB() *gorm.DB {
 	if err != nil {
 		panic("err:" + err.Error())
 	}
-	db.AutoMigrate(&models.Video{})
+	//db.AutoMigrate(&models.Video{})
+	//db.AutoMigrate(&models.User{})
 
 	DB = db
 	return DB

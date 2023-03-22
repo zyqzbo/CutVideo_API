@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"path/filepath"
 	"strings"
+	"time"
 	//"strconv"
 )
 
@@ -44,7 +45,7 @@ func CutVideoController(c *gin.Context) {
 		return
 	}
 
-	//startTime := time.Now().Unix()
+	startTime := time.Now().Format("2006-01-02 15:04:05")
 	//剪切视频
 	resultVideoPath := filepath.Join(outputDir, fmt.Sprintf("%s.%s", name.String(), ext))
 	err = ffmpeg.Input(inputVideoPath).
@@ -56,11 +57,11 @@ func CutVideoController(c *gin.Context) {
 		})
 		return
 	}
-	//endTime := time.Now().Unix()
+	endTime := time.Now().Format("2006-01-02 15:04:05")
 	video := models.Video{
-		Name: name.String(),
-		//StartTime:      startTime,
-		//EndTime:        endTime,
+		Name:           name.String(),
+		StartTime:      startTime,
+		EndTime:        endTime,
 		InputVideoPath: inputVideoPath,
 		OutputDir:      outputDir,
 		StartCut:       startCut,
@@ -68,12 +69,17 @@ func CutVideoController(c *gin.Context) {
 	}
 	db.Create(&video)
 	c.JSON(http.StatusOK, gin.H{
-		"data": resultVideoPath,
-		"msg":  "剪辑成功！",
+		"data": gin.H{
+			"resultVideoPath": resultVideoPath,
+			"startTime":       startTime,
+			"endTime":         endTime,
+		},
+		"msg": "剪辑成功！",
 	})
 
 }
 
+// 格式验证
 func in(target string, array []string) bool {
 	for _, element := range array {
 		if target == element {
