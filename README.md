@@ -178,6 +178,13 @@ jsonCopy code
 在剪辑视频接口中异步执行剪辑任务，同时返回任务的唯一标识
 
 ```go
+taskID, err := uuid.NewV4()
+if err != nil {
+	c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err,
+		})
+	return
+}
 go func() {
 		// 剪辑视频
 		err = ffmpeg.Input(inputVideoPath).
