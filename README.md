@@ -112,8 +112,8 @@ jsonCopy code
 {
     "inputVideoPath": "/Users/zyq/Desktop/test.mp4",
     "outputDir": "/Users/zyq/Desktop",
-    "startCut": "0:01",
-    "duration": "4"
+    "startCut": "00:00:00",
+    "duration": "00:00:04"
 }
 ```
 
