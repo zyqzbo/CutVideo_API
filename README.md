@@ -86,6 +86,11 @@ postMen测试
 
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/59222555/227130968-e955b463-910f-40c3-a64c-ab91f0525f00.png">
 
+视频剪辑结果
+
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/59222555/227136753-8c05881d-e9a8-4c55-bcc0-22c93a277bae.png">
+
+
 ## 2、接口文档说明
 
 ### 剪辑视频接口
